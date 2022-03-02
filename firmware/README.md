@@ -25,7 +25,7 @@ Note. this fork only support the OLED version, for LCD and Nokia Version, please
 ## Formatting the SD card
 
 You can use this version of the firmware with standard SD cards as well as with SDHC
-cards. You can format them in FAT16 or FAT32 only. The minimum cluster size is 32kB 
+cards. You can format them in FAT16 or FAT32 only. The minimum cluster size is 32kB
 (or 64 blocks per cluster). In order to formar a SD card, use the command:
 
 ### Windows: (use windows 7 or older. Windows 10 does not work)
@@ -57,7 +57,7 @@ of NIC files in the current directory as well as the subdirectories, will be cre
 Navigate through the list using the LEFT and RIGHT buttons. Use the ENTER button to
 select a NIC file or a directory. Directories are shown around [ ].
 
-Only NIC files are supported.
+**Only NIC files are supported.**
 
 ## Selecting the delay of the SD card
 
@@ -78,7 +78,7 @@ previous mounted NIC image. In this case, if you press the RIGHT button we swap 
 mounted NIC with the previous one. This may be useful if you are copying from one image to
 another or if you are playing a game that spans over two images.
 
-##1 Saving the default values and last NIC mounted
+## Saving the default values and last NIC mounted
 
 In order to save your configurations (SD card speed and last NIC mounted) you need
 to copy the file SDISKII.CFG (provided here) in the root directory of your SD card.
