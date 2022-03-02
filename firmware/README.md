@@ -30,22 +30,22 @@ cards. You can format them in FAT16 or FAT32 only. The minimum cluster size is 3
 
 ### Windows: (use windows 7 or older. Windows 10 does not work)
 
-  format [letter:] /FS:FAT /A:32K
+    format [letter:] /FS:FAT /A:32K
 
   you can replace FAT by FAT32
 
 ### MAC OS/X
 
-  diskutil partitionDisk /dev/[disk name] MBR FAT16 SDISKII 0b
-  diskutil umountDisk /deve[disk name]
-  newfs_msdos -F 16 -c 64 /dev/[disk name]
+    diskutil partitionDisk /dev/[disk name] MBR FAT16 SDISKII 0b
+    diskutil umountDisk /deve[disk name]
+    newfs_msdos -F 16 -c 64 /dev/[disk name]
 
   you can replace 16 (FAT16) by 32 (FAT32). The same for the partition scheme.
   64 is the number of blocks per cluster and can be larger.
 
 ### Linux
 
-  mkfs.msdos -F 16 -s 64 /dev/[disk name]
+    mkfs.msdos -F 16 -s 64 /dev/[disk name]
 
   you can replace 16 (FAT16) by 32 (FAT32). 64 is the number of blocks per cluster
   and can be larger.
