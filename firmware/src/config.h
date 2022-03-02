@@ -3,7 +3,7 @@
 SDISK II LCD Firmware
 
 2010.11.11 by Koichi Nishida
-2012.01.26 by Fábio Belavenuto
+2012.01.26 by Fï¿½bio Belavenuto
 2015.07.02 by Alexandre Suaide
 
 -------------------------------------
@@ -17,7 +17,7 @@ FAT16 and FAT32 disks should have at least 64 blocks per cluster
 */
 
 /*
-2012.01.26 by Fábio Belavenuto
+2012.01.26 by Fï¿½bio Belavenuto
 Added support for image exchange using a button added in the Brazilian version by Victor Trucco
 Added support for a 16x2 LCD
 */
@@ -179,9 +179,9 @@ DO NOT CHANGE THIS unless you really know what you are doing
 
 	#define _OLED_
 	// OLED pins
-	#define SDA_PIN 4
+	#define SDA_PIN 5  // Swapped from pin 4
 	#define SDA_PORT PORTC
-	#define SCL_PIN 5
+	#define SCL_PIN 4  // Swapped from pin 5
 	#define SCL_PORT PORTC
 	#define SSD1306_ADDRESS 0x3C
 
@@ -190,7 +190,7 @@ DO NOT CHANGE THIS unless you really know what you are doing
 	#define SPI_CLOCK 5
 	#define SPI_MOSI  3 //DI
 	#define SPI_CS    4
-	#define SD_EJECT  1
+	#define SD_EJECT  1    // NO EJECT DETECTION for this version. 
 	#define SPI_DDR   DDRD
 	#define SPI_PIN   PIND
 	#define SPI_PORT  PORTD
@@ -206,7 +206,7 @@ DO NOT CHANGE THIS unless you really know what you are doing
 	// SD LED
 	#define SD_LED_PORT PORTB
 	#define SD_LED_PORTD DDRB
-	#define SD_LED 5
+	#define SD_LED 4  // swapped from pin 5
 
 	// BOTOES
 	#define ENTER_PORT       PIND
@@ -217,7 +217,7 @@ DO NOT CHANGE THIS unless you really know what you are doing
 	#define UP_PORTD         PORTB
 	#define ENTER_BIT        DDD6
 	#define DOWN_BIT         DDD7
-	#define UP_BIT           DDB4
+	#define UP_BIT           DDB5 //swapped from pin 4
 
 	// PINOS PARA A DISK II - APPLE
 	#define DISKII_PIN       PINC

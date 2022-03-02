@@ -6,12 +6,12 @@
 
 // I2C pins at ATMEGA
 #ifndef SDA_PIN
-  #define SDA_PIN 4 
+  #define SDA_PIN 5 
   #define SDA_PORT PORTC
 #endif
 
 #ifndef SCL_PIN
-  #define SCL_PIN 5
+  #define SCL_PIN 4
   #define SCL_PORT PORTC
 #endif
 

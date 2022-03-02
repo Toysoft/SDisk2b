@@ -80,9 +80,16 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #define MAXNIC           4
 
-#define enter_is_pressed() bit_is_clear(ENTER_PORT,ENTER_BIT)
-#define down_is_pressed()  (bit_is_clear(DOWN_PORT,DOWN_BIT)*(flip_buttons==0) | bit_is_clear(UP_PORT,UP_BIT)*(flip_buttons==1))
-#define up_is_pressed()    (bit_is_clear(UP_PORT,UP_BIT)*(flip_buttons==0) | bit_is_clear(DOWN_PORT,DOWN_BIT)*(flip_buttons==1))
+// Change buttin to Active high (using TP223)
+#define enter_is_pressed() bit_is_set(ENTER_PORT,ENTER_BIT)
+
+//Disable button Rotation 
+#define down_is_pressed()  bit_is_set(DOWN_PORT,DOWN_BIT)
+#define up_is_pressed()    bit_is_set(UP_PORT,UP_BIT)
+
+//#define down_is_pressed()  (bit_is_clear(DOWN_PORT,DOWN_BIT)*(flip_buttons==0) | bit_is_clear(UP_PORT,UP_BIT)*(flip_buttons==1))
+//#define up_is_pressed()    (bit_is_clear(UP_PORT,UP_BIT)*(flip_buttons==0) | bit_is_clear(DOWN_PORT,DOWN_BIT)*(flip_buttons==1))
+
 #define diskII_disable()   bit_is_set(DISKII_PIN,DISKII_ENABLE)
 
 #define CHECKSUM_CONFIG 0X01AB02CD
