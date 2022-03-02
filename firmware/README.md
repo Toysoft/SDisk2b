@@ -40,15 +40,14 @@ cards. You can format them in FAT16 or FAT32 only. The minimum cluster size is 3
     diskutil umountDisk /deve[disk name]
     newfs_msdos -F 16 -c 64 /dev/[disk name]
 
-  you can replace 16 (FAT16) by 32 (FAT32). The same for the partition scheme.
-  64 is the number of blocks per cluster and can be larger.
+*you can replace 16 (FAT16) by 32 (FAT32). The same for the partition scheme.
+64 is the number of blocks per cluster and can be larger.*
 
 ### Linux
 
     mkfs.msdos -F 16 -s 64 /dev/[disk name]
 
-  you can replace 16 (FAT16) by 32 (FAT32). 64 is the number of blocks per cluster
-  and can be larger.
+*you can replace 16 (FAT16) by 32 (FAT32). 64 is the number of blocks per cluster and can be larger.*
 
 ## Selecting NIC image
 
