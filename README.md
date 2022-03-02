@@ -2,8 +2,8 @@
 
 Disk II flopy drive emulator for Apple 2 computers
 
-Objective. an Open Source Disk II floppy Disk emulator that is easy to make.
-See readme in firmare and PCB for related info.
+Objective. an Open Source Disk II floppy Disk emulator that is easy to make.   
+See readme in firmware and PCB section for related info.
 
 ## To-do
 
