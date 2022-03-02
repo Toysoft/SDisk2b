@@ -93,10 +93,10 @@ Open the programmer software, load the firmware.
 
 Check if the fuses are right. The values for the fuses are:
 
-   LFUSE = 0xF7
-   HFUSE = 0xF9
-   EFUSE = 0xFF
+    LFUSE = 0xF7
+    HFUSE = 0xF9
+    EFUSE = 0xFF
 
 then program your ATMEGA328P with this new firmware. Put it back to the SDISKII and you are set.
 
--- see customisation on how to roll your own version. 
+*see customisation on how to roll your own version.*
