@@ -47,13 +47,8 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define __SDISK2__
 
 
-#define VER "5.5"
-#define YEAR "(2020)"
-
-// these are done during compilation
-//#define _LCD_
-//#define _LCD_NOKIA_
-
+#define VER "5.6"
+#define YEAR "(2022)"
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -62,17 +57,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include <avr/eeprom.h>
 #include "string.h"
 
-#ifdef _LCD_
-	#include "lcd.h"
-#endif
-
-#ifdef _LCD_NOKIA_
-	#include "lcd_nokia.h"
-#endif
-
-#ifdef _OLED_
-    #include "oled.h"
-#endif
+#include "oled.h"
 
 #include "SPI_routines.h"
 #include "SD_routines.h"
@@ -129,10 +114,8 @@ void            set_speed();
 void            configButtons();
 int             main(void);
 
-#if defined(_LCD_NOKIA_) || defined(_OLED_)
 void            set_contrast();
 void            setup();
 void            icons(unsigned char i1, unsigned char i2, unsigned char i3);
-#endif
 
 #endif
