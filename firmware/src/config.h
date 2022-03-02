@@ -47,11 +47,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define nop() __asm__ __volatile__ ("nop")
 #define clear_bit(a,z) (a &= ~_BV(z))
 #define set_bit(a,z) (a |= _BV(z))
-#define LCD_FLIP_ADD 0
-
-#ifndef F_CPU
-    #define F_CPU 24000000UL //frequency of XTAL used. 
-#endif
+//#define LCD_FLIP_ADD 0
 
 /*
 This is the second version of SDISK II built by Victor Trucco
@@ -61,52 +57,50 @@ for firmware update.
 DO NOT CHANGE THIS unless you really know what you are doing
 */
 
-#define _OLED_
-// OLED pins
-#define SDA_PIN 5 // PC5 - Swapped from pin PC4
-#define SDA_PORT PORTC
-#define SCL_PIN 4 // PC4 - Swapped from pin PC5
-#define SCL_PORT PORTC
-#define SSD1306_ADDRESS 0x3C
+	#define _OLED_
+	// OLED pins
+	#define SDA_PIN 5
+	#define SDA_PORT PORTC
+	#define SCL_PIN 4
+	#define SCL_PORT PORTC
+	#define SSD1306_ADDRESS 0x3C
 
-// SPI (SD SLOT) pins
-#define SPI_MISO 0      //PD0
-#define SPI_CLOCK 5     //PD5
-#define SPI_MOSI 3      //PD3
-#define SPI_CS 4        //PD4
-#define SD_EJECT 1      //PD1 =  NO EJECT DETECTION for this version.
-#define SPI_DDR DDRD
-#define SPI_PIN PIND
-#define SPI_PORT PORTD
-#define _CLK_DI_CS 0b00111000
-#define _CLKNDI_CS 0b00110000
-#define NCLK_DI_CS 0b00011000
-#define NCLKNDI_CS 0b00010000
-#define _CLK_DINCS 0b00101000
-#define _CLKNDINCS 0b00100000
-#define NCLK_DINCS 0b00001000
-#define NCLKNDINCS 0b00000000
+	// SPI (SD SLOT) pins
+	#define SPI_MISO  0
+	#define SPI_CLOCK 5
+	#define SPI_MOSI  3 //DI
+	#define SPI_CS    4
+	#define SD_EJECT  1
+	#define SPI_DDR   DDRD
+	#define SPI_PIN   PIND
+	#define SPI_PORT  PORTD
+	#define _CLK_DI_CS	0b00111000
+	#define _CLKNDI_CS	0b00110000
+	#define NCLK_DI_CS	0b00011000
+	#define NCLKNDI_CS	0b00010000
+	#define _CLK_DINCS	0b00101000
+	#define _CLKNDINCS	0b00100000
+	#define NCLK_DINCS	0b00001000
+	#define NCLKNDINCS	0b00000000
 
-// SD LED
-#define SD_LED_PORT PORTB
-#define SD_LED_PORTD DDRB
-#define SD_LED 4            //PB4 swapped from pin 5
+	// SD LED
+	#define SD_LED_PORT PORTB
+	#define SD_LED_PORTD DDRB
+	#define SD_LED 4
 
-// BUTTONS
-#define ENTER_PORT PIND
-#define ENTER_PORTD PORTD
-#define ENTER_BIT DDD6      //PD6
+	// BOTOES
+	#define ENTER_PORT       PIND
+	#define DOWN_PORT        PIND
+	#define UP_PORT          PINB
+	#define ENTER_PORTD      PORTD
+	#define DOWN_PORTD       PORTD
+	#define UP_PORTD         PORTB
+	#define ENTER_BIT        DDD6
+	#define DOWN_BIT         DDD7
+	#define UP_BIT           DDB5
 
-#define DOWN_PORT PIND
-#define DOWN_PORTD PORTD
-#define DOWN_BIT DDD7       //PD7
-
-#define UP_PORT PINB
-#define UP_PORTD PORTB  
-#define UP_BIT DDB5         //PB5 swapped from pin 4
-
-// PINOS PARA A DISK II - APPLE
-#define DISKII_PIN PINC
-#define DISKII_ENABLE DDC0 //PC0 - DRIVE_EN
+	// PINOS PARA A DISK II - APPLE
+	#define DISKII_PIN       PINC
+	#define DISKII_ENABLE    DDC0
 
 #endif /* CONFIG_H_ */

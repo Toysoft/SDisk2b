@@ -47,8 +47,13 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define __SDISK2__
 
 
-#define VER "5.6"
-#define YEAR "(2022)"
+#define VER "5.4"
+#define YEAR "(2018)"
+
+// these are done during compilation
+//#define _LCD_
+//#define _LCD_NOKIA_
+
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -56,6 +61,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include <util/delay.h>
 #include <avr/eeprom.h>
 #include "string.h"
+
 
 #include "oled.h"
 
@@ -65,16 +71,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #define MAXNIC           4
 
-// Change buttin to Active high (using TP223)
 #define enter_is_pressed() bit_is_set(ENTER_PORT,ENTER_BIT)
-
-//Disable button Rotation 
 #define down_is_pressed()  bit_is_set(DOWN_PORT,DOWN_BIT)
 #define up_is_pressed()    bit_is_set(UP_PORT,UP_BIT)
-
-//#define down_is_pressed()  (bit_is_clear(DOWN_PORT,DOWN_BIT)*(flip_buttons==0) | bit_is_clear(UP_PORT,UP_BIT)*(flip_buttons==1))
-//#define up_is_pressed()    (bit_is_clear(UP_PORT,UP_BIT)*(flip_buttons==0) | bit_is_clear(DOWN_PORT,DOWN_BIT)*(flip_buttons==1))
-
 #define diskII_disable()   bit_is_set(DISKII_PIN,DISKII_ENABLE)
 
 #define CHECKSUM_CONFIG 0X01AB02CD

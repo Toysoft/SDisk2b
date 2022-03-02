@@ -5,7 +5,7 @@
 SDISK II LCD Firmware
 
 2010.11.11 by Koichi Nishida
-2012.01.26 by Fï¿½bio Belavenuto
+2012.01.26 by Fábio Belavenuto
 2015.07.02 by Alexandre Suaide
 
 -------------------------------------
@@ -19,7 +19,7 @@ FAT16 and FAT32 disks should have at least 64 blocks per cluster
 */
 
 /*
-2012.01.26 by Fï¿½bio Belavenuto
+2012.01.26 by Fábio Belavenuto
 Added support for image exchange using a button added in the Brazilian version by Victor Trucco
 Added support for a 16x2 LCD
 */
@@ -98,9 +98,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define READ_OCR				 CMD58
 #define CRC_ON_OFF               CMD59
 
-//disable SD eject 
 #define SD_ejected()             bit_is_clear(SD_PIN,SD_EJECT)
-/* #define SD_ejected()             bit_is_set(SD_PIN,SD_EJECT) */
 #define SD_select_card()         clear_bit(SD_PORT,SD_CS)
 #define SD_unselect_card()       set_bit(SD_PORT,SD_CS)
 
