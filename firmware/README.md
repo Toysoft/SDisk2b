@@ -20,7 +20,7 @@ Note. this fork only support the OLED version, for LCD and Nokia Version, please
   This is for the second version of the SDISK II done by Victor Trucco already with the
   128 x 64 OLED graphical display and USB connection to update the firmware.
 
-  Photo and schematics in the PCB section.
+  Photos and schematics in the PCB section.
 
 ## Formatting the SD card
 
@@ -40,8 +40,8 @@ cards. You can format them in FAT16 or FAT32 only. The minimum cluster size is 3
     diskutil umountDisk /deve[disk name]
     newfs_msdos -F 16 -c 64 /dev/[disk name]
 
-*you can replace 16 (FAT16) by 32 (FAT32). The same for the partition scheme.
-64 is the number of blocks per cluster and can be larger.*
+*you can replace 16 (FAT16) by 32 (FAT32). The same for the partition scheme.*
+*64 is the number of blocks per cluster and can be larger.*
 
 ### Linux
 
