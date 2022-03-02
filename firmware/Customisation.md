@@ -1,5 +1,5 @@
-## Customisation
-# OLED Display - SSD1306
+# Customisation
+## OLED Display - SSD1306
 This firmware is size for SSD1306 IIC OLED, you can get them in 0.96 or 1.54 inches size.
 pleasse take note of the pinout and make changes accordingly. 
 pinout configuration for this PCB.
