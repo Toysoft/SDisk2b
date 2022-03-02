@@ -1,6 +1,6 @@
 # Customisation
 ## OLED Display - SSD1306
-This firmware is size for SSD1306 IIC OLED, you can get them in 0.96 or 1.54 inches size.
+This firmware is made for SSD1306 IIC OLED, you can get them in 0.96 or 1.54 inches size.
 pleasse take note of the pinout and make changes accordingly. 
 pinout configuration for this PCB.
 1. VCC
@@ -13,7 +13,7 @@ IIC address is 0x3C
 The above can be changed in "config.h"
 
 ## SDCARD reader / writer
-This PCB uses SDCard reader from LC Studio, this is an old prrt in my bin. I comes with a AM1117-3.3v on board.
+This PCB uses SDCard reader from LC Studio, this is an old prrt in my bin. It comes with a AM1117-3.3v on board.
 You can use any SPI SDcard reader but you will need to convert 5v from the Disk interface to 3.3v for the rest of the circuit.
 
 You will need to disable SD_EJECT signal if your SDcard reader don't support it.
@@ -27,9 +27,9 @@ note. All VCC is 3.3v.
 
 ## Buttons
 Buttons
-Enter -  PD6
-Down - PD7
-UP - PB5
+Enter   - PD6
+Down    - PD7
+UP      - PB5
 
 I am uaing TP223, button press is active high. 
 So button detection is.
