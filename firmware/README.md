@@ -32,7 +32,7 @@ cards. You can format them in FAT16 or FAT32 only. The minimum cluster size is 3
 
     format [letter:] /FS:FAT /A:32K
 
-  you can replace FAT by FAT32
+*you can replace FAT by FAT32.*
 
 ### MAC OS/X
 
