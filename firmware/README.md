@@ -13,7 +13,7 @@ as you want. In order to save your configuration and keep track of your last mou
 NIC image and directory you need to have the SDISKII.CFG file saved in the top directory
 of your SD card. Please use the SDISKII.CFG file provided in this repository.
 
-# FIRMWARE
+## FIRMWARE
 
 Note. this fork only support the OLED version, for LCD and Nokia Version, please refer to orignial repo.
 
@@ -22,20 +22,19 @@ Note. this fork only support the OLED version, for LCD and Nokia Version, please
 
   Photo and schematics in the PCB section.
 
-Formatting the SD card
-======================
+## Formatting the SD card
 
 You can use this version of the firmware with standard SD cards as well as with SDHC
 cards. You can format them in FAT16 or FAT32 only. The minimum cluster size is 32kB 
 (or 64 blocks per cluster). In order to formar a SD card, use the command:
 
-Windows: (use windows 7 or older. Windows 10 does not work)
+### Windows: (use windows 7 or older. Windows 10 does not work)
 
   format [letter:] /FS:FAT /A:32K
 
   you can replace FAT by FAT32
 
-MAC OS/X
+### MAC OS/X
 
   diskutil partitionDisk /dev/[disk name] MBR FAT16 SDISKII 0b
   diskutil umountDisk /deve[disk name]
@@ -44,15 +43,14 @@ MAC OS/X
   you can replace 16 (FAT16) by 32 (FAT32). The same for the partition scheme.
   64 is the number of blocks per cluster and can be larger.
 
-Linux
+### Linux
 
   mkfs.msdos -F 16 -s 64 /dev/[disk name]
 
   you can replace 16 (FAT16) by 32 (FAT32). 64 is the number of blocks per cluster
   and can be larger.
 
-
-# Selecting NIC image
+## Selecting NIC image
 
 When there is no disk activity (LED off), press the middle button (ENTER). A list
 of NIC files in the current directory as well as the subdirectories, will be created.
@@ -61,7 +59,7 @@ select a NIC file or a directory. Directories are shown around [ ].
 
 Only NIC files are supported.
 
-# Selecting the delay of the SD card
+## Selecting the delay of the SD card
 
 Standard SD and SDHC cards can differ by a large value in terms of speed. In order
 to compensate it a little bit the user can set the delay of the card from 1 (small delays)
@@ -73,21 +71,21 @@ When there is no disk activity (LED off), press the LEFT button. The SDISKII wil
 prompt you to select the speed of the card. Use the LEFT and RIGHT buttons to
 navigate the available speeds and the ENTER (middle) button to select it.
 
-# Swap between two disk images
+## Swap between two disk images
 
 If you have the SDISKII.CFG file saved in your SD card (see bellow) we keep track of the
 previous mounted NIC image. In this case, if you press the RIGHT button we swap the current
 mounted NIC with the previous one. This may be useful if you are copying from one image to
 another or if you are playing a game that spans over two images.
 
-# Saving the default values and last NIC mounted
+##1 Saving the default values and last NIC mounted
 
 In order to save your configurations (SD card speed and last NIC mounted) you need
 to copy the file SDISKII.CFG (provided here) in the root directory of your SD card.
 If this file is not present every time you turn on the SDISKII the first found NIC
 will be mounted and the speed of the SD card will be set to 5.
 
-# Upgrading your SDISKII with this new firmware
+## Upgrading your SDISKII with this new firmware
 
 In order to upgrade your SDISKII with this new firmware you will need a chip programmer, such
 as the MiniPro TL866CS. Remove the ATMEGA328P from your SDISKII, plug it in the programmer.

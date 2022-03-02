@@ -1,24 +1,28 @@
 # SDisk2 - Simplified
+
 Disk II flopy drive emulator for Apple 2 computers
 
 Objective. an Open Source Disk II floppy Disk emulator that is easy to make.
-See readme in firmare and PCB for related info. 
+See readme in firmare and PCB for related info.
 
-# To-do
+## To-do
+
 1. remove all non OLED related code - this will be an OLED only version.
-2. remove screen / button rotation codes. 
+2. remove screen / button rotation codes.
 3. Better documentaion of the code.
 
-This project will be migrated to an ESP32 based SDISKII. 
+This project will be migrated to an ESP32 based SDISKII.
 
-# Authors
+## Authors
+
 * (c) 2010 Koichi NISHIDA <tulip-house@msf.biglobe.ne.jp>
 * (c) 2012 Victor Trucco
 * (c) 2012 Fábio Belavenuto
 * (c) 2015 Alexandre Suaide
 * (c) 2022 Terence Ang
 
-# License
+## License
+
 This work is released under the version 3 of the GNU General Public License.
 
 '''NOTE:'''
