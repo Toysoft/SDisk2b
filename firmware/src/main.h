@@ -47,8 +47,8 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define __SDISK2__
 
 
-#define VER "5.4"
-#define YEAR "(2018)"
+#define VER "5.5"
+#define YEAR "(2022)"
 
 // these are done during compilation
 //#define _LCD_
