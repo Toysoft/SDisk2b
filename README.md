@@ -7,10 +7,10 @@ See readme in firmware and PCB section for related info.
 
 ## Changes
 
-27Mhz Xtal version.
-This is a OLED only version all LCD and Nokia LCD codes have been removed.
-All Screen roation code removed.
-Buttons re arranged
+* 27Mhz Xtal version.
+* This is a OLED only version all LCD and Nokia LCD codes have been removed.
+* All Screen roation code removed.
+* Buttons re arranged
 
 ## To-do
 
