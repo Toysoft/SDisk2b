@@ -2,22 +2,22 @@
 
 Disk II flopy drive emulator for Apple 2 computers
 
-Objective. an Open Source Disk II floppy Disk emulator that is easy to make.   
+Objective. an Open Source Disk II floppy Disk emulator that is easy to make.  
 See readme in firmware and PCB section for related info.
 
 ## Changes
 
-* 27Mhz Xtal version.
-* This is a OLED only version all LCD and Nokia LCD codes have been removed.
-* All Screen roation code removed.
-* Buttons re arranged
+* 27Mhz Xtal.
+* OLED only. All LCD and Nokia LCD codes have been removed.
+* All Screen royation code removed.
+* Buttons re-arranged
 
 ## To-do
 
 1. Better documentaion of the code.
 
 This project will be migrated to an ESP32 based SDISKII.
-https://github.com/terenceang/sdisk2esp
+<https://github.com/terenceang/sdisk2esp>
 
 ## Authors
 
