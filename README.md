@@ -12,6 +12,7 @@ See readme in firmware and PCB section for related info.
 3. Better documentaion of the code.
 
 This project will be migrated to an ESP32 based SDISKII.
+https://github.com/terenceang/sdisk2esp
 
 ## Authors
 
