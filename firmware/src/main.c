@@ -46,7 +46,7 @@ unsigned char flip_buttons;
 #define DEBOUNCE 200
 
 #define MAXFILES 200
-int *files_id;
+unsigned char *files_id;
 int nfiles = 0;
 int selected_file_id = 0;
 int id_of_config_file = -1;
@@ -170,11 +170,11 @@ int main(void)
 					if (trk != old_trk)
 					{
 						old_trk = trk;
-						lcd_gotoxy(TRX, TRY);
-						lcd_put_p(TRAK);
+						ssd1306_gotoxy(TRX, TRY);
+						ssd1306_put_p(TRAK);
 						if (trk < 10)
-							lcd_put_s(" ");
-						lcd_put_i((unsigned int)trk);
+							ssd1306_string(" ");
+						ssd1306_put_i((unsigned int)trk);
 					}
 
 					if (((sectors[0] == sector) && (tracks[0] == trk)) || ((sectors[1] == sector) && (tracks[1] == trk)) ||
@@ -199,11 +199,11 @@ int main(void)
 void display_sd_ejected()
 {
 
-	lcd_clear();
-	lcd_gotoxy(37, 2);
-	lcd_put_p(ERR);
-	lcd_gotoxy(22, 4);
-	lcd_put_p(SDOUT);
+	ssd1306_clear();
+	ssd1306_gotoxy(37, 2);
+	ssd1306_put_p(ERR);
+	ssd1306_gotoxy(22, 4);
+	ssd1306_put_p(SDOUT);
 
 	do
 	{
@@ -228,28 +228,28 @@ char init_sd(char splash)
 
 	if (!ok)
 	{
-		lcd_clear();
-		lcd_gotoxy(37, 2);
-		lcd_put_p(ERR);
-		lcd_gotoxy(22, 4);
+		ssd1306_clear();
+		ssd1306_gotoxy(37, 2);
+		ssd1306_put_p(ERR);
+		ssd1306_gotoxy(22, 4);
 		if (errorCode == 1)
-			lcd_put_p(ERM1);
+			ssd1306_put_p(ERM1);
 		else if (errorCode == 2)
-			lcd_put_p(ERM2);
+			ssd1306_put_p(ERM2);
 		else if (errorCode == 3)
-			lcd_put_p(ERM3);
+			ssd1306_put_p(ERM3);
 		else if (errorCode == 4)
-			lcd_put_p(ERM4);
+			ssd1306_put_p(ERM4);
 		else if (errorCode == 5)
-			lcd_put_p(ERM5);
+			ssd1306_put_p(ERM5);
 		else if (errorCode == 6)
-			lcd_put_p(ERM6);
+			ssd1306_put_p(ERM6);
 		else if (errorCode == 7)
-			lcd_put_p(ERM7);
+			ssd1306_put_p(ERM7);
 		else
 		{
-			lcd_put_p(ERMC);
-			lcd_put_i(errorCode);
+			ssd1306_put_p(ERMC);
+			ssd1306_put_i(errorCode);
 		}
 		inited = 0;
 		while (!SD_ejected())
@@ -260,13 +260,13 @@ char init_sd(char splash)
 
 	if (splash)
 	{
-		lcd_clear();
-		lcd_gotoxy(0, 2);
+		ssd1306_clear();
+		ssd1306_gotoxy(0, 2);
 
 		if (SD_version == SD_RAW_SPEC_SDHC)
-			lcd_put_p(MSHC);
+			ssd1306_put_p(MSHC);
 		else
-			lcd_put_p(MSSD);
+			ssd1306_put_p(MSSD);
 
 		SD_select_card();
 		_delay_ms(1000);
@@ -275,29 +275,29 @@ char init_sd(char splash)
 	ok = FAT_init();
 	if (!ok)
 	{
-		lcd_clear();
-		lcd_gotoxy(37, 2);
-		lcd_put_p(ERR);
-		lcd_gotoxy(22, 4);
+		ssd1306_clear();
+		ssd1306_gotoxy(37, 2);
+		ssd1306_put_p(ERR);
+		ssd1306_gotoxy(22, 4);
 
 		if (errorCode == 1)
-			lcd_put_p(ERM1);
+			ssd1306_put_p(ERM1);
 		else if (errorCode == 2)
-			lcd_put_p(ERM2);
+			ssd1306_put_p(ERM2);
 		else if (errorCode == 3)
-			lcd_put_p(ERM3);
+			ssd1306_put_p(ERM3);
 		else if (errorCode == 4)
-			lcd_put_p(ERM4);
+			ssd1306_put_p(ERM4);
 		else if (errorCode == 5)
-			lcd_put_p(ERM5);
+			ssd1306_put_p(ERM5);
 		else if (errorCode == 6)
-			lcd_put_p(ERM6);
+			ssd1306_put_p(ERM6);
 		else if (errorCode == 7)
-			lcd_put_p(ERM7);
+			ssd1306_put_p(ERM7);
 		else
 		{
-			lcd_put_p(ERMC);
-			lcd_put_i(errorCode);
+			ssd1306_put_p(ERMC);
+			ssd1306_put_i(errorCode);
 		}
 		inited = 0;
 		while (!SD_ejected())
@@ -309,11 +309,11 @@ char init_sd(char splash)
 	if ((FAT_bytesPerSector * FAT_sectorsPerCluster / 1024) < (NIC_FILE_SIZE / FAT_NIC_ELEMS))
 	{
 		errorCode = 5;
-		lcd_clear();
-		lcd_gotoxy(37, 2);
-		lcd_put_p(ERR);
-		lcd_gotoxy(22, 4);
-		lcd_put_p(ERM5);
+		ssd1306_clear();
+		ssd1306_gotoxy(37, 2);
+		ssd1306_put_p(ERR);
+		ssd1306_gotoxy(22, 4);
+		ssd1306_put_p(ERM5);
 
 		inited = 0;
 		while (!SD_ejected())
@@ -324,13 +324,13 @@ char init_sd(char splash)
 
 	if (splash)
 	{
-		lcd_gotoxy(0, 4);
+		ssd1306_gotoxy(0, 4);
 
-		lcd_put_p(PART);
+		ssd1306_put_p(PART);
 		if (FAT_partitionType == PARTITION_TYPE_FAT16)
-			lcd_put_p(FAT1);
+			ssd1306_put_p(FAT1);
 		else
-			lcd_put_p(FAT3);
+			ssd1306_put_p(FAT3);
 
 		_delay_ms(1000);
 		// SD_select_card();
@@ -385,15 +385,14 @@ void init(char splash)
 
 	if (splash)
 	{
-		lcd_init();
-		ssd1306_screenUp();
-		lcd_clear();
-		lcd_gotoxy(0, 0);
+		ssd1306_init();
+		ssd1306_clear();
+		ssd1306_gotoxy(0, 0);
 		logo();
-		lcd_gotoxy(13, 6);
-		lcd_put_p(SPLASH1);
-		lcd_gotoxy(7, 7);
-		lcd_put_p(VERSION);
+		ssd1306_gotoxy(13, 6);
+		ssd1306_put_p(SPLASH1);
+		ssd1306_gotoxy(7, 7);
+		ssd1306_put_p(VERSION);
 		_delay_ms(1500);
 	}
 }
@@ -505,7 +504,7 @@ void verify_status(void)
 	}
 }
 
-//Contrast Page
+// Contrast Page
 void set_contrast()
 {
 	unsigned char contrast = 0XAF;
@@ -527,19 +526,19 @@ void set_contrast()
 		struct Sdisk_config_structure *config = (struct Sdisk_config_structure *)buffer;
 		if (config->checksum == CHECKSUM_CONFIG)
 		{
-			contrast = config->lcd_contrast;
+			contrast = config->oled_contrast;
 		}
 	}
-	lcd_clear();
-	lcd_gotoxy(0, 0);
-	lcd_underline();
-	lcd_put_p(CONT);
-	lcd_underline();
-	icons(3, 4, 5); // 5-enter, 4-down, 3-up 
+	ssd1306_clear();
+	ssd1306_gotoxy(0, 0);
+	ssd1306_underline();
+	ssd1306_put_p(CONT);
+	ssd1306_underline();
+	icons(3, 4, 5); // 5-enter, 4-down, 3-up
 
-	lcd_gotoxy(0, 2);
-	lcd_put_p(VALUE);
-	lcd_put_i(contrast);
+	ssd1306_gotoxy(0, 2);
+	ssd1306_put_p(VALUE);
+	ssd1306_put_i(contrast);
 
 	unsigned char old_contrast = contrast;
 	unsigned char original_contrast = contrast;
@@ -548,10 +547,10 @@ void set_contrast()
 		configButtons();
 		if (contrast != old_contrast)
 		{
-			lcd_gotoxy(0, 2);
-			lcd_put_p(VALUE);
-			lcd_put_i(contrast);
-			lcd_put_p(PSTR(" "));
+			ssd1306_gotoxy(0, 2);
+			ssd1306_put_p(VALUE);
+			ssd1306_put_i(contrast);
+			ssd1306_put_p(PSTR(" "));
 			old_contrast = contrast;
 		}
 
@@ -569,8 +568,8 @@ void set_contrast()
 				contrast = MIN_CONTRAST;
 			else
 			{
-				lcd_contrast = contrast;
-				ssd1306_contrast(lcd_contrast);
+				oled_contrast = contrast;
+				ssd1306_contrast(oled_contrast);
 			}
 		}
 		if (up_is_pressed())
@@ -585,8 +584,8 @@ void set_contrast()
 				contrast = MAX_CONTRAST;
 			else
 			{
-				lcd_contrast = contrast;
-				ssd1306_contrast(lcd_contrast);
+				oled_contrast = contrast;
+				ssd1306_contrast(oled_contrast);
 			}
 		}
 		if (enter_is_pressed())
@@ -597,8 +596,8 @@ void set_contrast()
 			_delay_ms(DEBOUNCE);
 			if (contrast != original_contrast)
 			{
-				lcd_contrast = contrast;
-				ssd1306_contrast(lcd_contrast);
+				oled_contrast = contrast;
+				ssd1306_contrast(oled_contrast);
 				SD_select_card();
 				if (id_of_config_file != -1)
 				{
@@ -618,7 +617,7 @@ void set_contrast()
 					struct Sdisk_config_structure *config = (struct Sdisk_config_structure *)buffer;
 					if (config->checksum == CHECKSUM_CONFIG)
 					{
-						config->lcd_contrast = contrast;
+						config->oled_contrast = contrast;
 						SD_writeSingleBlock(getSector(cluster));
 					}
 				}
@@ -629,26 +628,26 @@ void set_contrast()
 	return;
 }
 
-//Setup Page
+// Setup Page
 void setup()
 {
-	lcd_clear();
-	lcd_gotoxy(0, 0);
-	lcd_underline();
-	lcd_put_p(SETUP);
-	lcd_underline();
+	ssd1306_clear();
+	ssd1306_gotoxy(0, 0);
+	ssd1306_underline();
+	ssd1306_put_p(SETUP);
+	ssd1306_underline();
 
-	icons(3, 4, 5); // 5-enter, 4-down, 3-up 
+	icons(3, 4, 5); // 5-enter, 4-down, 3-up
 
 	unsigned char option = 1;
-	lcd_gotoxy(0, 2);
-	lcd_inverse();
-	lcd_put_p(SET1); //set speed
-	lcd_inverse();
-	lcd_gotoxy(0, 3);
-	lcd_put_p(SET2); //set contrast
+	ssd1306_gotoxy(0, 2);
+	ssd1306_inverse();
+	ssd1306_put_p(SET1); // set speed
+	ssd1306_inverse();
+	ssd1306_gotoxy(0, 3);
+	ssd1306_put_p(SET2); // set contrast
 
-#define MAX_SET 2 //number of item
+#define MAX_SET 2 // number of item
 
 	while (1)
 	{
@@ -666,18 +665,18 @@ void setup()
 			else
 			{
 				if (option == 1)
-					lcd_inverse();
-				lcd_gotoxy(0, 2);
-				lcd_put_p(SET1);
+					ssd1306_inverse();
+				ssd1306_gotoxy(0, 2);
+				ssd1306_put_p(SET1);
 				if (option == 1)
-					lcd_inverse();
+					ssd1306_inverse();
 
 				if (option == 2)
-					lcd_inverse();
-				lcd_gotoxy(0, 3);
-				lcd_put_p(SET2);
+					ssd1306_inverse();
+				ssd1306_gotoxy(0, 3);
+				ssd1306_put_p(SET2);
 				if (option == 2)
-					lcd_inverse();
+					ssd1306_inverse();
 			}
 		}
 		if (up_is_pressed())
@@ -693,18 +692,18 @@ void setup()
 			else
 			{
 				if (option == 1)
-					lcd_inverse();
-				lcd_gotoxy(0, 2);
-				lcd_put_p(SET1);
+					ssd1306_inverse();
+				ssd1306_gotoxy(0, 2);
+				ssd1306_put_p(SET1);
 				if (option == 1)
-					lcd_inverse();
+					ssd1306_inverse();
 
 				if (option == 2)
-					lcd_inverse();
-				lcd_gotoxy(0, 3);
-				lcd_put_p(SET2);
+					ssd1306_inverse();
+				ssd1306_gotoxy(0, 3);
+				ssd1306_put_p(SET2);
 				if (option == 2)
-					lcd_inverse();
+					ssd1306_inverse();
 			}
 		}
 		if (enter_is_pressed())
@@ -730,29 +729,29 @@ void icons(unsigned char i1, unsigned char i2, unsigned char i3)
 #define IC_2 58
 #define IC_3 115
 
-	lcd_gotoxy(IC_1, IC_LINE);
-	lcd_overline();
-	lcd_put_p(EMP);
-	lcd_gotoxy(IC_1, IC_LINE);
-	lcd_icon(i1);
-	lcd_gotoxy(IC_2, IC_LINE);
-	lcd_icon(i2);
-	lcd_gotoxy(IC_3, IC_LINE);
-	lcd_icon(i3);
-	lcd_overline();
+	ssd1306_gotoxy(IC_1, IC_LINE);
+	ssd1306_overline();
+	ssd1306_put_p(EMP);
+	ssd1306_gotoxy(IC_1, IC_LINE);
+	ssd1306_icon(i1);
+	ssd1306_gotoxy(IC_2, IC_LINE);
+	ssd1306_icon(i2);
+	ssd1306_gotoxy(IC_3, IC_LINE);
+	ssd1306_icon(i3);
+	ssd1306_overline();
 }
 
 void set_speed()
 {
-	lcd_clear();
-	lcd_gotoxy(0, 0);
-	lcd_underline();
-	lcd_put_p(DLAY);
-	lcd_underline();
-	icons(3, 5, 4); // 5-setup, 4-Disk, 3-last Disk 
-	lcd_gotoxy(0, 3);
-	lcd_put_p(VALUE);
-	lcd_put_i(SD_speed);
+	ssd1306_clear();
+	ssd1306_gotoxy(0, 0);
+	ssd1306_underline();
+	ssd1306_put_p(DLAY);
+	ssd1306_underline();
+	icons(3, 5, 4); // 5-setup, 4-Disk, 3-last Disk
+	ssd1306_gotoxy(0, 3);
+	ssd1306_put_p(VALUE);
+	ssd1306_put_i(SD_speed);
 
 	unsigned char old_speed = SD_speed;
 	unsigned char original_speed = SD_speed;
@@ -762,10 +761,10 @@ void set_speed()
 		if (SD_speed != old_speed)
 		{
 
-			lcd_gotoxy(0, 3);
-			lcd_put_p(VALUE);
-			lcd_put_i(SD_speed);
-			lcd_put_p(PSTR(" "));
+			ssd1306_gotoxy(0, 3);
+			ssd1306_put_p(VALUE);
+			ssd1306_put_i(SD_speed);
+			ssd1306_put_p(PSTR(" "));
 			old_speed = SD_speed;
 		}
 
@@ -830,7 +829,7 @@ void set_speed()
 	return;
 }
 
-//Nic Selection Page
+// Nic Selection Page
 void select_nic()
 {
 	int i = 0, j = 0, k = 0;
@@ -841,18 +840,18 @@ void select_nic()
 	lastBlockRead = -1;
 	buffClear();
 
-	lcd_underline();
-	lcd_gotoxy(0, 0);
-	lcd_put_p(MSG7);
-	lcd_underline();
+	ssd1306_underline();
+	ssd1306_gotoxy(0, 0);
+	ssd1306_put_p(MSG7);
+	ssd1306_underline();
 	icons(3, 4, 5); // 3-up, 4-down, 5-enter
 	for (i = 1; i <= 5; i++)
 	{
-		lcd_gotoxy(0, i);
-		lcd_put_p(EMP);
+		ssd1306_gotoxy(0, i);
+		ssd1306_put_p(EMP);
 	}
-	lcd_gotoxy(0, 3);
-	lcd_put_p(MSGC);
+	ssd1306_gotoxy(0, 3);
+	ssd1306_put_p(MSGC);
 
 	i = 0;
 
@@ -872,13 +871,13 @@ void select_nic()
 
 	if (nfiles == 0)
 	{
-		lcd_gotoxy(0, 3);
-		lcd_put_p(MSG8);
+		ssd1306_gotoxy(0, 3);
+		ssd1306_put_p(MSG8);
 		return;
 	}
 
-	lcd_gotoxy(0, 3);
-	lcd_put_p(MSGD);
+	ssd1306_gotoxy(0, 3);
+	ssd1306_put_p(MSGD);
 
 	// sort list of files in the directory
 	if (nfiles > 1)
@@ -957,11 +956,11 @@ void select_nic()
 			index_old = index;
 			struct dir_Structure *file = getFile(files_id[index]);
 
-			lcd_gotoxy(0, 3);
+			ssd1306_gotoxy(0, 3);
 			if (is_a_dir(file))
-				lcd_icon(6);
+				ssd1306_icon(6);
 			else
-				lcd_icon(1);
+				ssd1306_icon(1);
 			unsigned char count = 0;
 			for (int i = 0; i < 8; i++)
 				if (file->name[i] != ' ')
@@ -1014,13 +1013,13 @@ void find_previous_nic()
 				{
 					SD_speed = config->sd_card_speed;
 
-					lcd_contrast = config->lcd_contrast;
-					if (lcd_contrast > MAX_CONTRAST)
-						lcd_contrast = MAX_CONTRAST;
-					if (lcd_contrast < MIN_CONTRAST)
-						lcd_contrast = MIN_CONTRAST;
+					oled_contrast = config->oled_contrast;
+					if (oled_contrast > MAX_CONTRAST)
+						oled_contrast = MAX_CONTRAST;
+					if (oled_contrast < MIN_CONTRAST)
+						oled_contrast = MIN_CONTRAST;
 
-					ssd1306_contrast(lcd_contrast);
+					ssd1306_contrast(oled_contrast);
 
 					SD_select_card();
 
@@ -1173,19 +1172,21 @@ unsigned int mount_nic_image(int file_id, struct dir_Structure *file)
 	if (!file)
 		return 0;
 
-	lcd_clear();
-	lcd_gotoxy(0, 0);
-	lcd_underline();
-	lcd_put_p(NIC);
-	lcd_gotoxy(6 * (21 - 5), 0);
+	ssd1306_clear();
+	ssd1306_gotoxy(0, 0);
+	ssd1306_underline();
+	ssd1306_put_p(NIC);
+	ssd1306_gotoxy(6 * (21 - 5), 0);
+
 	if (FAT_partitionType == PARTITION_TYPE_FAT16)
-		lcd_put_p(FAT1);
+		ssd1306_put_p(FAT1);
 	else
-		lcd_put_p(FAT3);
-	lcd_underline();
-	icons(2, 0, 1);   //0-setup, 1-select, 2-swap
-	lcd_gotoxy(0, 2);
-	lcd_icon(1);
+		ssd1306_put_p(FAT3);
+
+	ssd1306_underline();
+	icons(2, 0, 1); // 0-setup, 1-select, 2-swap
+	ssd1306_gotoxy(0, 2);
+	ssd1306_icon(1);
 	for (int i = 0; i < 8; i++)
 		if (file->name[i] != ' ')
 			ssd1306_char(file->name[i]);
@@ -1253,7 +1254,7 @@ unsigned int mount_nic_image(int file_id, struct dir_Structure *file)
 		config->directory_of_last_mounted_nic = current_dir;
 		config->id_of_last_mounted_nic = file_id;
 		config->sd_card_speed = SD_speed;
-		config->lcd_contrast = lcd_contrast;
+		config->oled_contrast = oled_contrast;
 
 		SD_writeSingleBlock(getSector(cluster));
 	}

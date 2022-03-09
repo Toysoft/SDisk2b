@@ -54,8 +54,8 @@
 #define MIN_CONTRAST 0
 #define MAX_CONTRAST 255
 
-unsigned char lcd_contrast;
-unsigned char lcd_offset;
+unsigned char oled_contrast;
+unsigned char ssd1306_offset;
 
 void ssd1306_command(int c);
 void ssd1306_data(unsigned char c);
@@ -72,17 +72,11 @@ void ssd1306_overline();
 
 // these are just to maintain the same function scheme used for the other LCD screens
 
-void lcd_init();
-void lcd_clear();
-void lcd_gotoxy(unsigned char x, unsigned char y);
-void lcd_put_s(char *str);
-void lcd_put_i(unsigned int value);
-void lcd_put_l(unsigned long int value);
-void lcd_put_p(const prog_char *progmem_s);
-void lcd_icon(int icon);
-void lcd_inverse();
-void lcd_underline();
-void lcd_overline();
+void ssd1306_gotoxy(unsigned char x, unsigned char y);
+void ssd1306_put_i(unsigned int value);
+void ssd1306_put_l(unsigned long int value);
+void ssd1306_put_p(const prog_char *progmem_s);
+void ssd1306_icon(int icon);
 void logo();
 
 #endif

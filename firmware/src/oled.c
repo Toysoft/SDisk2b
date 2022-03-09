@@ -43,11 +43,11 @@ void ssd1306_init()
 {
     i2c_init();
     ssd1306_command(SSD1306_DISPLAYOFF);                    // 0xAE  
-	ssd1306_command(SSD1306_NORMALDISPLAY); 
+	  ssd1306_command(SSD1306_NORMALDISPLAY); 
     ssd1306_command(SSD1306_SETDISPLAYCLOCKDIV);            // 0xD5
     ssd1306_command(0x80);                                  // the suggested ratio 0x80   
     ssd1306_command(SSD1306_SETMULTIPLEX);                  // 0xA8    
-	ssd1306_command(0x3F); 
+	  ssd1306_command(0x3F); 
     ssd1306_command(SSD1306_SETDISPLAYOFFSET);              // 0xD3
     ssd1306_command(0x0);                                   // no offset  
     ssd1306_command(SSD1306_SETSTARTLINE | 0x0);            // line #0   
@@ -70,18 +70,19 @@ void ssd1306_init()
     ssd1306_command(SSD1306_NORMALDISPLAY);                 // 0xA6
     ssd1306_command(SSD1306_DISPLAYON);                     //switch on OLED
     ssd1306_contr = 0xCF;
-	lcd_contrast = ssd1306_contr;
-	lcd_offset = 2;
+    oled_contrast = ssd1306_contr;
+	  ssd1306_offset = 2;
     ssd1306_inv = 0;
     ssd1306_under = 0;
     ssd1306_over = 0;
-	ssd1306_screenDown();
+	  ssd1306_screenUp();
 }
+
 void ssd1306_clear()
 {
   for(int line = 0 ; line<8; line++)
   {
-	  lcd_gotoxy(0,line);
+	  ssd1306_gotoxy(0,line);
 	  for(int col = 0; col<132; col++) ssd1306_data(0);
   }
   i2c_stop(); 
@@ -117,53 +118,44 @@ void ssd1306_screenUp()
     ssd1306_command(SSD1306_COMSCANDEC);                   
     ssd1306_clear();
 }
+
 void ssd1306_screenDown()
 {
     ssd1306_command(SSD1306_SEGREMAP | 0x0);                
     ssd1306_command(SSD1306_COMSCANINC);
     ssd1306_clear();
 }
+
 void ssd1306_inverse() {ssd1306_inv=!ssd1306_inv;}
 void ssd1306_underline() {ssd1306_under=!ssd1306_under;}
 void ssd1306_overline() {ssd1306_over=!ssd1306_over;}
 	
-void lcd_init()
-{
-	ssd1306_init();
-}	
-void lcd_clear()
-{
-	ssd1306_clear();
-}
-void lcd_gotoxy(unsigned char x, unsigned char y)
+void ssd1306_gotoxy(unsigned char x, unsigned char y)
 {	
 	ssd1306_command(0xB0+y); // Start Page address
 	unsigned char col = x/8;
-	ssd1306_command(lcd_offset+(8*col&0x0F));
+	ssd1306_command(ssd1306_offset+(8*col&0x0F));
 	ssd1306_command(0x10+((8*col>>4)&0x0F));
 }
-void lcd_put_s(char *str)
-{
-	ssd1306_string(str);
-}
-void lcd_put_i(unsigned int value)
+
+void ssd1306_put_i(unsigned int value)
 {
 	char buffer[10];
 	itoa(value,buffer,10);
 	ssd1306_string(buffer);
 }
-void lcd_put_l(unsigned long int value)
+void ssd1306_put_l(unsigned long int value)
 {
 	char buffer[10];
 	ltoa(value,buffer,10);
 	ssd1306_string(buffer);
 }
-void lcd_put_p(const prog_char *progmem_s)
+void ssd1306_put_p(const prog_char *progmem_s)
 {
 	register char c;
 	while ( (c = pgm_read_byte(progmem_s++)) )  ssd1306_char(c);
 }
-void lcd_icon(int icon)
+void ssd1306_icon(int icon)
 {
 	for (int index = 0; index < 12; index++)
 	{
@@ -175,14 +167,12 @@ void lcd_icon(int icon)
 	}
 	ssd1306_data(255*(ssd1306_inv==true)  | (1<<7)*(ssd1306_under==true) | (ssd1306_over==true) );
 }
-void lcd_inverse() {ssd1306_inverse();}
-void lcd_underline() {ssd1306_underline();}
-void lcd_overline() {ssd1306_overline();}
+
 void logo()
 {
 	for(int i = 0;i<5;i++)
 	{
-		lcd_gotoxy(25,i);
+		ssd1306_gotoxy(25,i);
 		
 		for(int j = 0; j<74; j++)
 		{
